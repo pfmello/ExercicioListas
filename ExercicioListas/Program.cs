@@ -11,9 +11,10 @@ namespace ExercicioListas
     {
         static void Main(string[] args)
         {
+            "Exercicio de Listas Curso Nélio Alves".PrintLine();
+
             List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
-            "Exercicio de Listas Curso Nélio Alves".PrintLine();
             int qtdFuncionarios = "Quantos funcionários serão registrados: ".ReturnInt();
 
             AdicionarFuncionarios(qtdFuncionarios, listaFuncionarios);
@@ -29,10 +30,18 @@ namespace ExercicioListas
 
         private static void AumentarSalario(List<Funcionario> listaFuncionarios)
         {
-            int id = "Qual ID do funcionario que tera aumento: ".ReturnInt();
-            int aumento = "De quanto sera o aumento em porcentagem: ".ReturnInt();
+            Funcionario escolhido;
+            int aumento;
 
-            var escolhido = listaFuncionarios.Find(x => x.ID == id);
+            do
+            {
+                int id = "Qual ID do funcionario que tera aumento: ".ReturnInt();
+                escolhido = listaFuncionarios.Find(x => x.ID == id); 
+
+            } while (escolhido == null);
+
+            aumento = "De quanto sera o aumento em porcentagem: ".ReturnInt();
+
             escolhido.AumentarSalario(aumento);
         }
 
